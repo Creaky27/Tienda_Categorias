@@ -11,12 +11,12 @@
 
     if(isset($_SESSION['rol'])){
         switch($_SESSION['rol']){
-            case 1:
+            case 3:
                 header('location: abarrotes.php');
             break;
 
             case 2:
-            header('location: modatelas.php');
+                header('location: tecnologia.php');
             break;
 
             default:
@@ -38,8 +38,8 @@
             $_SESSION['rol'] = $rol;
 
             switch($_SESSION['rol']){
-                case 1:
-                    header('location: modatelas.php');
+                case 3:
+                    header('location: tecnologia.php');
                 break;
     
                 case 2:
