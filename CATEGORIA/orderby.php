@@ -2,14 +2,14 @@
 require_once("../LIB/functions.php");
 $categoria = get_all_categories($connect);
 
-// Ascending Order
+// Ascendente
 if(isset($_POST['ASC']))
 {
     $asc_query = "SELECT * FROM categories ORDER BY name ASC";
     $result = executeQuery($asc_query);
 }
 
-// Descending Order
+// Descendente
 elseif (isset ($_POST['DESC'])) 
     {
           $desc_query = "SELECT * FROM categories ORDER BY name DESC";
@@ -28,8 +28,6 @@ elseif (isset ($_POST['DESC']))
         $default_query = "SELECT * FROM categories";
         $result = executeQuery($default_query);
 }
-
-
 function executeQuery($query)
 {
     $connect = mysqli_connect("localhost", "root", "", "elorigin_unid");
