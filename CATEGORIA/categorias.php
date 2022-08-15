@@ -1,6 +1,6 @@
 <?php
 require_once("../LIB/functions.php");
-$name = $_POST["user"] ;
+// $name = $_POST["user"] ;
 ?>
 
 <!DOCTYPE html>
