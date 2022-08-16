@@ -1,6 +1,6 @@
 <?php
 require_once("../LIB/functions.php");
-// $name = $_POST["user"] ;
+
 ?>
 
 <!DOCTYPE html>
@@ -8,28 +8,19 @@ require_once("../LIB/functions.php");
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categorias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Categorias</title> 
 </head>
 <center>
     <body>
-
         <h1>Todas las Categorías</h1>
-        <form id='users_id' action="envio.php" method='POST'></form>
-        <select name="user" id="user">
-        <option value = "0"> Seleccionar Cliente </option>
-        <?php
-                
-                $user = "SELECT * FROM users" ;
-                $resultado = mysqli_query($connect, $user) ;
-                /*  BUSCADOR POR IMPLEMENTAR
-                        while ($valores = mysqli_fetch_array($resultado)) {
-                        echo '<option value = "'.$valores[names].'">'.$valores[names].'</option>';
-                } */  
-        ?>
-        </select>
+        <div>
+        <!-- SE INTENTO IMPLEMENTAR UNA FUNCION DE BUSQUEDA PERO NO SE COMPLETÓ-->
+	<label for="caja_busqueda">BUSCAR:</label> 
+	<input type="text" name="caja_busqueda" id="caja_busqueda"></input>
+        </div>
 
-        <?php
+        <?php 
         
                 if(isset($_GET['order'])){
                 $order = $_GET['order'];
@@ -42,12 +33,17 @@ require_once("../LIB/functions.php");
                         $sort = 'ASC' ;
                 }
 
-    	       categorie_table($order , $sort);
+    	       categorie_table($order , $sort); 
         ?>
 
+        
+
+
         <h4><small><a href="insert.php">Agregar Categoria</a></small></h4>
-        <h4><small><a href="#">Regresar</a></small></h4>
+        <h4><small><a href="categorias.php">Regresar</a></small></h4>
 
         </body>
 </center>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="../LIB/functions.js"></script>
 </html>

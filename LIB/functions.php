@@ -77,4 +77,46 @@ function delete_categorie($connect, $id){
     $consulta = "DELETE FROM categories WHERE id = $id";
     $resultado = mysqli_query($connect, $consulta);
 }
+function buscador(){
+    $mysqli = NEW MySQLi('localhost', 'root', '', 'elorigin_unid');
+$salida = "" ;
+$query = "SELECT * FROM categories ORDER BY id" ;
+
+if(isset($_POST['consulta'])){
+    $q = $mysqli -> real_escape_string($_POST['consulta']) ;
+    $query = "SELECT name, user_id, id FROM categories WHERE name LIKE '%".$q."%' OR user_id LIKE '%".$q."%' " ; 
+}
+
+$resultado = $mysqli -> query($query);
+
+if ($resultado -> num_rows > 0){
+
+    $salida.= "<table class= 'tabla_datos'
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Nombre</td>
+                <td>Status</td>
+                <td>User ID</td>
+            </tr>
+        </thead>
+        <tbody>";
+    while($fila = $resultado -> fetch_assoc()){
+        $salida.= "<tr>
+            <td>".$fila['id']."</td>
+            <td>".$fila['name']."</td>
+            <td>".$fila['status']."</td>
+            <td>".$fila['user_id']."</td>
+        </tr>";
+    }
+
+            $salida.= "</tbody</table>";
+
+    } else {
+                    $salida.="No hay datos :(" ;
+            }
+            echo $salida;
+
+            $mysqli->close();
+}
 ?>
